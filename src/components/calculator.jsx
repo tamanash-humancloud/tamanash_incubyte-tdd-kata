@@ -42,7 +42,7 @@ const Calculator = () => {
                 setFirstNumber('');
                 setSecondNumber('');
                 setOperator('');
-                setDisplay('');
+                setDisplay('0');
                 break;
             case '=':
                 const ans = getResult();
@@ -64,7 +64,7 @@ const Calculator = () => {
                 {firstNumber} {operator} {secondNumber}
             </div>
             {/* Displays user inputs and results */}
-            <div>
+            <div role='display'>
                 {display}
             </div>
         </div>

@@ -1,9 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import App from '../App';
+import userEvent from '@testing-library/user-event';
+import Calculator from '../components/calculator';
 
-// test('renders learn react link', () => {
-//   render(<App />);
-//   const linkElement = screen.getByText(/learn react/i);
-//   expect(linkElement).toBeInTheDocument();
-// });
-
+describe('Calculator Component', () => {
+    it('should display the initial state correct', () => {
+        render(<Calculator />)
+        const display = screen.getByRole('display')
+        expect(display).toHaveTextContent('0')
+    });
+})
