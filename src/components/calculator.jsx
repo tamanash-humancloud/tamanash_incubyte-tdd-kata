@@ -1,10 +1,9 @@
 import { useState } from 'react'
 
 const Calculator = () => {
-    const [display, setDisplay] = useState('')
+    const [display, setDisplay] = useState('0')
     const [firstNumber, setFirstNumber] = useState('');
     const [secondNumber, setSecondNumber] = useState('')
-    const [result, setResult] = useState('')
     const [operator, setOperator] = useState('')
 
     const handleInput = (value) => {
@@ -20,6 +19,41 @@ const Calculator = () => {
     const handleOperator = (value) => {
         setOperator(value)
         setDisplay('0')
+    }
+
+    const getResult = () => {
+        switch(operator) {
+            case '+':
+                return parseInt(firstNumber) + parseInt(secondNumber)
+            case '-':
+                return parseInt(firstNumber) - parseInt(secondNumber)
+            case '*':
+                return parseInt(firstNumber) * parseInt(secondNumber)
+            case '/':
+                return parseInt(firstNumber) / parseInt(secondNumber)
+            default:
+                return
+        }
+    }
+
+    const handleUtility = (value) => {
+        switch(value) {
+            case 'c':
+                setFirstNumber('');
+                setSecondNumber('');
+                setOperator('');
+                setDisplay('');
+                break;
+            case '=':
+                const ans = getResult();
+                setDisplay(ans);
+                setFirstNumber('');
+                setSecondNumber('');
+                setOperator('');
+                break;
+            default:
+                return
+        }
     }
 
   return (
@@ -58,8 +92,8 @@ const Calculator = () => {
                 </div>
                 {/* Utility Buttons */}
                 <div className='utility'>
-                    <button onClick={() => handleOperator('c')}>C</button>
-                    <button onClick={() => handleOperator('=')}>=</button>
+                    <button className='bg-danger' onClick={() => handleUtility('c')}>C</button>
+                    <button className='bg-success' onClick={() => handleUtility('=')}>=</button>
                 </div>
             </div>
         </div>

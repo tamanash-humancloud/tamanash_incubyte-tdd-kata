@@ -1,6 +1,5 @@
 .App{
   width: 100vw;
-  height: 100vh;
 }
 
 .calculator {
@@ -11,13 +10,24 @@
   border: 1px solid black;
   padding: 10px;
   border-radius: 15px;
+  margin: 50px auto;
 }
 
 .display {
   border: 2px solid black;
-  height: 80px;
+  height: 50px;
   border-radius: 15px;
-  width: 100%;
+  width: 90%;  
+  padding: 10px;
+  text-align: end;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+button {
+  padding: 20px;
+  font-size: 26px;
+  border-radius: 5px;
 }
 
 .button-wrapper {
@@ -26,9 +36,14 @@
   margin: 10px auto;
 }
 
+.button-wrapper > div {
+  margin: 6px;
+}
+
 .input-wrapper {
   display: grid;
   grid-template-columns: auto auto auto;
+  gap: 10px;
 }
 
 .last-input{
@@ -43,9 +58,22 @@
 .operator {
   display: grid;
   grid-template-columns: auto auto;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 .utility {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto;
+  gap: 10px;
+}
+
+.bg-success {
+  background-color: rgb(46, 182, 46);
+  color: white;
+}
+
+.bg-danger {
+  background-color: rgb(212, 20, 20);
+  color: white;
 }
