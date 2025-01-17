@@ -19,5 +19,16 @@ describe('Calculator Component', () => {
             expect(display).toHaveTextContent('78'); 
         })
     });
+
+    it('should handle operator inputs correctly', async () => {
+        render(<Calculator />);
+        userEvent.click(screen.getByRole('button', { name: '7' }));
+        userEvent.click(screen.getByRole('button', { name: '+' }));
+
+        await waitFor(() => {
+            const display = screen.getByRole('display'); 
+            expect(display).toHaveTextContent('0'); 
+        })
+    });
     
 })
