@@ -1,10 +1,11 @@
 import { useState } from 'react'
 
 const Calculator = () => {
-    const [display, setDisplay] = useState('0')
+    const [display, setDisplay] = useState('0');
     const [firstNumber, setFirstNumber] = useState('');
-    const [secondNumber, setSecondNumber] = useState('')
-    const [operator, setOperator] = useState('')
+    const [secondNumber, setSecondNumber] = useState('');
+    const [operator, setOperator] = useState('');
+    const [result, setResult] = useState(0);
 
     const handleInput = (value) => {
         if(operator){
@@ -17,6 +18,10 @@ const Calculator = () => {
     }    
 
     const handleOperator = (value) => {
+        if(result){
+            setFirstNumber(result.toString())
+        }
+
         setOperator(value)
         setDisplay('0')
     }
@@ -42,11 +47,13 @@ const Calculator = () => {
                 setFirstNumber('');
                 setSecondNumber('');
                 setOperator('');
+                setResult(0);
                 setDisplay('0');
                 break;
             case '=':
                 const ans = getResult();
                 setDisplay(ans);
+                setResult(ans);
                 setFirstNumber('');
                 setSecondNumber('');
                 setOperator('');
